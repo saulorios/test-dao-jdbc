@@ -1,6 +1,6 @@
 package application;
 
-import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import model.dao.DaoFactory;
@@ -18,8 +18,16 @@ public class Program {
 		System.out.print("Enter the number to find by Id: ");
 		int number = sc.nextInt();
 		Seller seller = sellerDao.findById(number);
-				
 		System.out.println(seller);
+		
+		System.out.print("Enter the number to find by Department: ");
+		number = sc.nextInt();
+		Department department = new Department(number, null);
+		List<Seller> list = sellerDao.findByDepartment(department);
+		for(Seller obj: list) {
+			System.out.println(obj);
+		}
+				
 	}
 
 }
